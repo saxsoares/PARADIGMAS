@@ -24,11 +24,11 @@ isdifferent x y z
 	|x==z = "x = z"
 	|y==z = "y = z"
 
-fibonacci::Integer->Integer
-fibonacci x
+fibonacci::Int->Int
+fibonacci  x
 	|x==1 = 1
 	|x==2 = 1
-	|otherwise=(fibonacci (x-1))+(fibonacci (x-2))
+	|otherwise=(fibonacci ( x-1)) + (fibonacci  ( x-2))
 
 fatorial::Integer->Integer
 fatorial x
@@ -74,3 +74,29 @@ elimina_rep (x:xs)
 	|x == head(xs) = elimina_rep xs
 	|otherwise = x:elimina_rep xs	
 
+dobro::Int->Int
+dobro x = 2 * x
+
+triplo::Int->Int
+triplo x = 3 * x
+
+dist::(Int->Int)->(Int, Int)->(Int, Int)
+dist f (x, y) = (f x, f y)
+
+funcao::(Int->Int)->Int->Int
+funcao func x = func x
+
+fresulta::Int->(Int->Int)
+fresulta x 
+	|x == 1 = dobro 
+	|x == 2 = triplo
+
+sextuplo::Int->Int
+sextuplo = dobro.triplo
+
+removeA::String->String
+removeA xs = [x | x<-xs, x /='a']
+
+casamento::(Int,Int, [Int], [Int])->String
+casamento (0,x,(c:cs),[_,_])="Casou"
+casamento _ = "nao casou"
