@@ -117,4 +117,12 @@ baskara a b c = (x1, x2)
 		x1 = (-(b) + sqrt(delta)) / 2*a
 		x2 = (-(b) - sqrt(delta)) / 2*a
 
+rotacaoesq::[a]->[a]
+rotacaoesq (x:xs) = xs++[x]
 
+nrotacaoesq::[a]->Int->[a]
+nrotacaoesq lista n = fim ++ ini
+	where
+		ini = take n lista
+		fim = drop n lista
+	 
