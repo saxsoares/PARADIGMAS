@@ -100,3 +100,21 @@ removeA xs = [x | x<-xs, x /='a']
 casamento::(Int,Int, [Int], [Int])->String
 casamento (0,x,(c:cs),[_,_])="Casou"
 casamento _ = "nao casou"
+
+listapq::Int->Int->[Int]
+listapq a b = lista 
+	where
+		quad x = x^2
+		lista = [quad x|x<-[a..b], mod x 2 == 0]
+
+listapqlet::Int->Int->[Int]
+listapqlet a b = let quad x = x^2 in [quad x|x<-[a..b], mod x 2 == 0]
+
+baskara::Double->Double->Double->(Double, Double)
+baskara a b c = (x1, x2)
+	where
+		delta = (b^2 - 4*a*c)
+		x1 = (-(b) + sqrt(delta)) / 2*a
+		x2 = (-(b) - sqrt(delta)) / 2*a
+
+
