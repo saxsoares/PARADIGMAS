@@ -17,3 +17,7 @@ myLast'''' = foldl1 (curry snd)
  
 myLast''''' [] = error "No end for empty lists!"  
 myLast''''' x = x !! (length x -1)
+
+doubleme x = x + x
+
+doubleSmall x = if x > 100 then x else x * 2
