@@ -26,3 +26,11 @@ fibonnacci n
     | n == 2 = 1
     |otherwise = fibonnacci (n-1) + fibonnacci (n-2)
 
+doubleSmallN x = if x > 100
+                    then x
+                    else x * 2
+
+parImpar lista = [ if not(odd x) then "par" else "impar" | x <- lista ]
+
+combinalistas x y = [ a*b | a<-x, b<-y]
+
