@@ -122,4 +122,23 @@ quicksort (x:xs) =
     let left = quicksort [a | a <- xs, a <= x]
         right = quicksort [a | a <- xs, a > x]
     in left ++ [x] ++ right    
-    
+   
+mult3::(Num a)=> a -> a -> a -> a
+mult3 a b c = a * b * c
+
+mult2 = mult3 9
+
+compara100::(Num a, Ord a)=>a->Ordering
+compara100 = compare 100
+
+funcfunc::(a->a)->a->a
+funcfunc f x = f (f x)
+
+zipWith'::(a->b->c)->[a]->[b]->[c]
+zipWith' _ [] _ = []
+zipWith' _ _ [] = []
+zipWith' f (a:as) (b:bs) = f a b : zipWith' f as bs
+
+flip'::(a->b->c)->(b->a->c)
+flip' f x y = f y x
+
