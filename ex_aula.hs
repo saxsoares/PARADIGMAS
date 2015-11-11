@@ -130,3 +130,8 @@ quicksort (x:xs)  =
 	let 	left =  [a | a<-xs,a<=x]
 		right=  [a | a<- xs, a > x]
 	in quicksort left ++ [x] ++ quicksort right
+
+geraComb::Int->String->[String]
+geraComb 0 _ = []
+geraComb _ [] = []
+geraComb 1 str = [str]
