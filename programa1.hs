@@ -142,3 +142,16 @@ zipWith' f (a:as) (b:bs) = f a b : zipWith' f as bs
 flip'::(a->b->c)->(b->a->c)
 flip' f x y = f y x
 
+maxi::(Ord a)=>[a]->a
+maxi [] = error "Lista Vazia"
+maxi [a] = a
+maxi (x:xs) = foldr1 (\a b->(max a b)) (x:xs)
+   
+bublesort::[Int]->[Int]
+bublesort [] = []
+bublesort (x:[]) = [x]
+bublesort lista = ( foldl1 (\a b->(min a b)) lista :( bublesort [x|x<-lista, x/=(minimum lista)] ) )
+
+
+
+
