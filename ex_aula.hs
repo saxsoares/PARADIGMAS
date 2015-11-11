@@ -105,3 +105,28 @@ maior [a] = a
 maior (x:xs)
     | x >= head xs = maior (x:tail xs)
     | otherwise = maior xs
+
+derivada::(Float,Float)->Float->Float
+derivada (a,ex) 0 = 0
+derivada (0,_) _ = 0
+derivada (a,0) x = 0
+derivada (a,ex) x = ex*a * (x **(ex-1))
+
+calcDerivada::[(Float,Float)]->Float->Float
+calcDerivada [] _     = 0
+calcDerivada (a:[]) x = derivada a x
+calcDerivada (a:as) x = derivada a x + calcDerivada as x
+
+fac::Float->Float
+fac 0 = 1
+fac n = product [1..n]
+
+aprox::Float->Float
+aprox n = sum [1 / (fac x)| x<-[0..n]]
+
+quicksort::(Ord a)=>[a]->[a]
+quicksort [] = []
+quicksort (x:xs)  = 
+	let 	left =  [a | a<-xs,a<=x]
+		right=  [a | a<- xs, a > x]
+	in quicksort left ++ [x] ++ quicksort right
