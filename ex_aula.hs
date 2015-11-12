@@ -106,6 +106,10 @@ maior (x:xs)
     | x >= head xs = maior (x:tail xs)
     | otherwise = maior xs
 
+maior'::(Ord a)=>[a]->a
+maior' [x] = x
+maior' xs = foldl1 (\a b->(max a b)) xs
+
 derivada::(Float,Float)->Float->Float
 derivada (a,ex) 0 = 0
 derivada (0,_) _ = 0
@@ -127,11 +131,57 @@ aprox n = sum [1 / (fac x)| x<-[0..n]]
 quicksort::(Ord a)=>[a]->[a]
 quicksort [] = []
 quicksort (x:xs)  = 
-	let 	left =  [a | a<-xs,a<=x]
-		right=  [a | a<- xs, a > x]
-	in quicksort left ++ [x] ++ quicksort right
+    let left =  [a | a<-xs,a<=x]
+        right=  [a | a<- xs, a > x]
+    in quicksort left ++ [x] ++ quicksort right
 
-geraComb::Int->String->[String]
+insertionSort::(Ord a)=>[a]->[a]
+insertionSort = foldr insertOrd []
+
+insertOrd::(Ord a)=>a->[a]->[a]
+insertOrd x [] = [x]
+insertOrd x (y:ys)
+    | x <= y = (x:y:ys)
+    |otherwise = y:(insertOrd x ys)
+
+tirarep::(Eq a)=>[a]->[a]
+tirarep [] = []
+tirarep [x] = [x]
+tirarep (x:xs) = (x:tirarep [a | a<-xs, a/=x])
+
+geraComb::Int->[a]->[[a]]
 geraComb 0 _ = []
-geraComb _ [] = []
-geraComb 1 str = [str]
+geraComb 1 s = [ [x] | x<- s ] 
+geraComb n s = [ x:xs | x <- s, xs<-( geraComb (n-1) s) ] 
+
+geraComb' = geraComb 4 [1,0]
+
+geraComb'' = [[a,b,c,d]| a<-"10",b<-"10",c<-"10",d<-"10"]
+
+geraComb'''::Int->[String]
+geraComb''' 1 = ["1","0"]
+geraComb''' n = [(x:xs)| x<-"10",xs<-geraComb''' (n-1) ]
+
+ordena::(Ord a)=>[a]->[a]
+ordena [] = []
+ordena [a] = [a]
+ordena (x:xs) = ordena left ++ [x] ++ ordena right
+    where left = [ a | a<-xs, a <= x]
+          right = [ a | a<-xs,  a > x ]
+
+pos::(Eq a)=>a->[a]->Int
+pos a [] = 0
+pos a (x:xs)
+    |not(a `elem` (x:xs)) = 0
+    |x == a = 1
+    |otherwise =  1 + pos a xs
+
+maior2::(Ord a)=>[a]->(a,Int)
+maior2 [a] = (a,1)
+maior2 (x:xs) = (maximum (x:xs), pos (maximum (x:xs)) (x:xs)) 
+
+
+tuplatodos::a->[b]->[(a,b)]
+tuplatodos a lb = zip (repeat a) lb
+
+
