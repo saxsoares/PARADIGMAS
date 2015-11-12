@@ -153,5 +153,9 @@ bublesort (x:[]) = [x]
 bublesort lista = ( foldl1 (\a b->(min a b)) lista :( bublesort [x|x<-lista, x/=(minimum lista)] ) )
 
 
+separaBreak::[Int]->([Int],[Int])
+separaBreak v = break (\a->(a `mod` 2)==1) v
 
+separaSpan::[Int]->([Int],[Int])
+separaSpan v = span (\a->(a `mod` 2)==0) v
 
