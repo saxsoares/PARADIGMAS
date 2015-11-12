@@ -184,4 +184,51 @@ maior2 (x:xs) = (maximum (x:xs), pos (maximum (x:xs)) (x:xs))
 tuplatodos::a->[b]->[(a,b)]
 tuplatodos a lb = zip (repeat a) lb
 
+myMap::(a->b)->[a]->[b]
+myMap _ [] = []
+myMap f (x:xs) = (f x):(myMap f xs)
+
+retiraext::String->String
+retiraext "" = ("")
+retiraext str = uncurry const (span (\a->a /= '.') str)
+
+paresEntre::Int->Int->[Int]    
+paresEntre x y = [ a^2 | a <- pares ]
+    where pares = [ xx | xx <- [x..y], (xx `mod` 2) == 0]
+    
+paresEntre'::Int->Int->[Int]
+paresEntre' a b = 
+    let pares = [ xx | xx <- [a..b], (xx `mod` 2) == 0]
+    in [ paq | paq <- pares]
+
+rotEsq::[a]->[a]
+rotEsq [] = []
+rotEsq [a] = [a]
+rotEsq (x:xs) = xs++[x]
+
+rotacaoEsq::Int->[a]->[a]
+rotacaoEsq 0 l = l
+rotacaoEsq n l = rotacaoEsq (n-1) (rotEsq l)
+
+f1::Int->[Int]
+f1 x = [ a | a<-[1000..1100], (a `mod` x) /= 0]
+
+elimina_n::(Eq a)=>Int->[a]->[a]
+elimina_n _ [] = []
+elimina_n n xs = [ x | x <- xs, x /= (xs!!(n+1))]
+
+cutList::(Eq a)=>Int->Int->[a]->[a]
+cutList _ _ [] = []
+cutList i j xs
+    | i >= length xs = []
+    | i >= j = []
+    | j >= length xs = drop (i-1) xs
+    |otherwise =drop (i-1) (take j xs)  
+
+
+
+
+
+
+
 
