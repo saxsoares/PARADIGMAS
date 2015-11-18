@@ -91,7 +91,9 @@ insere a xs
 
 insere'::(Eq a)=>a->[a]->[a]
 insere' s [] = [s]
-insere' s (x:[]) = (x:[]) ++ [s]
+insere' s [x]
+    | s == x = [x]
+    | otherwise = x:[s]
 insere' s (x:xs)
     | s == x = (x:xs)
     | otherwise = (x:insere' s xs)
@@ -224,6 +226,47 @@ cutList i j xs
     | i >= j = []
     | j >= length xs = drop (i-1) xs
     |otherwise =drop (i-1) (take j xs)  
+
+insertSort::(Ord a)=>[a]->[a]
+insertSort = foldl insertO []
+
+insertO::(Ord a)=>[a]->a->[a]
+insertO [] a = [a]
+insertO (x:xs) a
+    |a <= x = (a:x:xs)
+    |otherwise = x:(insertO xs a)
+
+expo::(Num a,Enum a, Fractional a, Floating a, Eq a)=>a->a->a
+expo 0 _ = 1
+expo x n = (x ** n)/product [1..n]
+
+
+taylor::(Num a, Enum a, Fractional a, Floating a, Eq a)=>a->a->a
+taylor x n = foldl1 (\a b->a+b) [expo x b | b<-[0..n]]
+
+filtro::Int->Int->[Int]->[Int]
+filtro x y xs = filter (\a->(a>x && a<y)) xs
+
+auxDuplica::Int->[Int]->[Int]
+auxDuplica 0 [] = []
+auxDuplica n xs = replicate n n ++ xs
+
+duplica::[Int]->[Int]
+duplica [] = []
+duplica xs = foldr auxDuplica [] xs
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
