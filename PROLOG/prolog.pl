@@ -33,10 +33,37 @@ mulher(maria).
 pai(X,Y):-progenitor(X,Y) , homem(X).
 /* mae(X,Y) significa que X é mãe de Y */
 mae(X,Y):-progenitor(X,Y), mulher(X).  
-irma(X,Y):-mulher(X),progenitor(Z,X),progenitor(Z,Y),X\=Y.
+irma(X,Y):-
+	mulher(X),
+	progenitor(Z,X),
+	progenitor(Z,Y),X\=Y.
 
 passaro(tweety).
 peixe(goldie).
 minhoca(squiggly).
 gato(miau).
-gostam(X,Y):-(passaro(X),minhoca(Y));(gato(X),peixe(Y));(gato(X),passaro(Y));(amigo(X,Y)).
+gostam(X,Y):-
+	(passaro(X),minhoca(Y));
+	(gato(X),peixe(Y));
+	(gato(X),passaro(Y));
+	(amigo(X,Y)).
+
+inc(X,R):-R is R + 2.
+
+casou(joao, maria, dia(5, maio, 2000)).
+casou(jose, claudia, dia(11, novembro, 1950)).
+casou(andre, fernanda, dia(11, agosto, 1960)).
+casou(adriano, claudia, dia(15, outrubro, 1973)).
+
+descendente(X,Y):-
+	progenitor(Y,X).
+descendente(X,Y):-
+	progenitor(Y,Z),
+	descendente(X,Z).
+
+fatorial(0,1).
+fatorial(N,F):-
+	N>0,
+	N1 is N - 1,
+	fatorial(N1,F1),
+	F is N * F1.
