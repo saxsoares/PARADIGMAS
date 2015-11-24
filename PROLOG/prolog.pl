@@ -48,8 +48,6 @@ gostam(X,Y):-
 	(gato(X),passaro(Y));
 	(amigo(X,Y)).
 
-inc(X,R):-R is R + 2.
-
 casou(joao, maria, dia(5, maio, 2000)).
 casou(jose, claudia, dia(11, novembro, 1950)).
 casou(andre, fernanda, dia(11, agosto, 1960)).
@@ -67,3 +65,6 @@ fatorial(N,F):-
 	N1 is N - 1,
 	fatorial(N1,F1),
 	F is N * F1.
+
+insereInicio(H, L, [H|L]):-
+	!.
