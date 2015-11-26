@@ -35,6 +35,7 @@ jealous(X,Y):-
 	loves(X,Z),
 	loves(Y,Z).
 
+%Ex 1.5
 wizard(ron). 
 wizard(X):-
 	hasWand(X), 
@@ -43,6 +44,7 @@ hasWand(harry).
 quidditchPlayer(harry). 
 hasBroom(X):-
 	quidditchPlayer(X).
+
 
 
 
