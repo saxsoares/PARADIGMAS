@@ -1,8 +1,8 @@
 /* Aprendendo Prolog com o Livro online 'learn prolog now' */
 % KB1
-mulher(mia).
-mulher(jody).
-mulher(yolanda).
+woman(mia).
+woman(jody).
+woman(yolanda).
 
 party.
 
@@ -31,7 +31,40 @@ loves(marsellus,mia).
 loves(pumpkin,honey_bunny). 
 loves(honey_bunny,pumpkin).
 
- jealous(X,Y):-
+jealous(X,Y):-
 	loves(X,Z),
 	loves(Y,Z).
+
+wizard(ron). 
+wizard(X):-
+	hasWand(X), 
+	hasBroom(X). 
+hasWand(harry). 
+quidditchPlayer(harry). 
+hasBroom(X):-
+	quidditchPlayer(X).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
