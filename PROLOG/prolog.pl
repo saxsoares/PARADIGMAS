@@ -68,3 +68,29 @@ fatorial(N,F):-
 
 insereInicio(H, L, [H|L]):-
 	!.
+
+reg-->("a";"b";"c";"d"), "x".
+bin-->("0","1");("0";"1"),bin.
+
+%ex01
+s--> "a",s,"b";"a","b".
+
+%ex02
+b-->("b",b;"b").
+a-->("a",a;"a").
+ss-->b,"a",a,"b".
+
+%ex03
+dig-->"0";"1";"2";"3";"4";"5";"6";"7";"8";"9".
+num-->dig,num;dig.
+expr-->(num,"+",expr);(num,"-",expr);num.
+
+%ex05
+id-->"a";"b";"c";"d".
+exp-->("(",exprr,")");id.
+fator-->exp;(exp,("**",exp)).
+termo-->fator;(fator,(("*";"/"),fator)).
+exprr-->termo;(termo,(("+";"-"),termo)).
+
+
+
