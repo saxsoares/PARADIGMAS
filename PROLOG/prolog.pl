@@ -88,9 +88,36 @@ expr-->(num,"+",expr);(num,"-",expr);num.
 %ex05
 id-->"a";"b";"c";"d".
 exp-->("(",exprr,")");id.
-fator-->exp;(exp,("**",exp)).
-termo-->fator;(fator,(("*";"/"),fator)).
-exprr-->termo;(termo,(("+";"-"),termo)).
+
+fator-->exp,fatorrep.
+fatorrep-->"";("**",exp,fatorrep).
+
+termo-->fator,termorep.
+termorep-->"";(("*";"/"),fator,termorep).
+
+exprr-->termo,exprep.
+exprep-->"";(("+";"-"),termo,exprep).
+
+%ex06
+aux1-->"";",",nomevar,aux1.
+defvar-->tipo,nomevar,aux1,";";tipo,nomevar,aux1,";",defvar.
+
+tipo-->"void ";"float ";"double ";"int ";"char ".
+letras-->"a";"b";"c";"A";"B";"C".
+inteiro-->dig;dig,inteiro.
+
+nomevar-->star,letras,letedig,intaux.
+star-->"";"*",star.
+letedig-->"";(letras;dig;"_"),letedig.
+intaux-->"";("[",inteiro,"]"),intaux.
+
+
+
+
+
+
+
+
 
 
 
