@@ -111,8 +111,13 @@ star-->"";"*",star.
 letedig-->"";(letras;dig;"_"),letedig.
 intaux-->"";("[",inteiro,"]"),intaux.
 
+inc(X,R):-
+	R = X + 1.
 
-
+maior(X,Y,X):-
+	X>=Y.
+maior(X,Y,Y):-
+	X<Y.
 
 
 
