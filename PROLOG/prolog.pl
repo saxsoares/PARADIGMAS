@@ -119,7 +119,9 @@ maior(X,Y,X):-
 maior(X,Y,Y):-
 	X<Y.
 
-
+maior2(X,Y,Z):-
+    ((X>Y), Z is X);
+    ((X=<Y), Z is Y).
 
 
 
