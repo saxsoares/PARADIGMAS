@@ -94,33 +94,9 @@ botam(X):-
 
 %%%%%%%%%%%%%%%%%
 
-dig(0).
-dig(1).
-bin([A,B,C]) :- dig(A),dig(B),dig(C), write([A,B,C]), nl, fail.
-
-lista([1,a,dia(seg)]).
-
-conc([],L,L).
-%conc(L,[],L).
-conc([X|L1],L2,[X,L3]):-
-    conc(L1,L2,L3).
-
-membro(X,[X|_]).
-membro(X,[_|L]):-
-    membro(X,L).
-
-insere(X,[],[X]).
-insere(X,L,[X|L]).
-
-ninsere(X,0,L,[X|L]).
-    
-
-ninsere(X,N,L,Lr):-
-    N > 0,
-    N1 is N - 1,
-    ninsere(X,N1,[_,L],Lr).
-
-
+concat([],L,L).
+concat([X|L1],L2,[X|L3]):-
+    concat(L1,L2,L3).
 
 
 
